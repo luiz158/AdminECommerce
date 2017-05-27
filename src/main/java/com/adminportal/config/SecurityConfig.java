@@ -18,6 +18,7 @@ import com.adminportal.utility.SecurityUtility;
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
 	@Autowired
 	private Environment env;
 
