@@ -34,9 +34,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
+		// Pequena alteração que permite acesso somente a role = ROLE_ADMIN
+		// ROLE_ já é inserido automaticamente pelo SpringSecurity
 		http.authorizeRequests()
 				// .antMatchers("/**");
-				.antMatchers(PUBLIC_MATCHERS).permitAll().anyRequest().authenticated();
+				.antMatchers(PUBLIC_MATCHERS).permitAll().anyRequest().hasRole("ADMIN");
 
 		http.csrf().disable().cors().disable().formLogin().failureUrl("/login?error").defaultSuccessUrl("/")
 				.loginPage("/login").permitAll().and().logout()
