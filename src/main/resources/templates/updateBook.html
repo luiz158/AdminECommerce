@@ -16,12 +16,13 @@
 
 	<div class="container">
 		<div class="row">
-			<form class="form-horizontal" th:action="@{/book/add}" method="post" enctype="multipart/form-data">
+			<form class="form-horizontal" th:action="@{/book/updateBook}" method="post" enctype="multipart/form-data">
 				<fieldset>
 					<legend class="center-block">
-						New Book Information
+						Update Book Information
 						<span style="font-size: small"> * is a required field</span>
 					</legend>
+					<input type="hidden" name="id" th:value="${book.id}" />
 					<!-- ##################### -->
 					<!-- Book Title -->
 					<div class="form-group">
@@ -217,14 +218,14 @@
 						<div class="form-group">
 							<label for="description">Description</label>
 							<textarea rows="5" class="form-control" placeholder="Description" th:value="${book.description}"
-								name="description" id="description"></textarea>
+								th:text="${book.description}" name="description" id="description"></textarea>
 							<span class="help-block">Description of the Book</span>
 						</div>
 						<!-- ##################### -->
 						<!-- Description -->
 						<div class="form-group">
-							<button class="btn btn-success" type="submit">Add Book</button>
-							<a href="" class="btn btn-default" th:href="@{/}">Cancel</a>
+							<button class="btn btn-success" type="submit">Update Book</button>
+							<a href="" class="btn btn-default" th:href="@{/book/bookInfo(id=${book.id})}">Cancel</a>
 						</div>
 					</div>
 
